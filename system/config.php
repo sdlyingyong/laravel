@@ -15,6 +15,7 @@ class Config {
 	 * @param  string  $key
 	 * @return mixed
 	 */
+	//获取某项配置数据
 	public static function get($key)
 	{
 		// ---------------------------------------------
