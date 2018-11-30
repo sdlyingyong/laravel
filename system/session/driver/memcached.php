@@ -19,6 +19,7 @@ class Memcached implements \System\Session\Driver {
 	 * @param  array  $session
 	 * @return void
 	 */
+	//保存sessioin到memcached
 	public function save($session)
 	{
 		\System\Cache::driver('memcached')->put($session['id'], $session, \System\Config::get('session.lifetime'));
@@ -41,6 +42,7 @@ class Memcached implements \System\Session\Driver {
 	 * @param  int   $expiration
 	 * @return void
 	 */
+	//memcached缓存自动失效
 	public function sweep($expiration)
 	{
 		// Memcached sessions will expire automatically.

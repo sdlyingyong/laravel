@@ -1,5 +1,6 @@
 <?php namespace System\Session;
 
+//定义session存储的抽象接口,强制各种存储方式实现这些接口,同时上层能够配置驱动,数据驱动
 interface Driver {
 
 	/**

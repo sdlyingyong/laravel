@@ -18,6 +18,7 @@ class DB implements \System\Session\Driver {
 		// -----------------------------------------------------
 		// If the session was found, return it.
 		// -----------------------------------------------------
+		//获取到数据,则按照id,最后修改时间,数据的格式返回
 		if ( ! is_null($session))
 		{
 			return array('id' => $session->id, 'last_activity' => $session->last_activity, 'data' => unserialize($session->data));
@@ -70,6 +71,7 @@ class DB implements \System\Session\Driver {
 	 *
 	 * @return Query
 	 */
+	//查询数据库方法
 	private function query()
 	{
 		return \System\DB::table(\System\Config::get('session.table'));		

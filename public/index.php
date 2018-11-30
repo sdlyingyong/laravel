@@ -63,11 +63,13 @@ set_exception_handler(function($e)
 	System\Error::handle($e);	
 });
 
+//设置自定义错误处理函数
 set_error_handler(function($number, $error, $file, $line) 
 {
 	System\Error::handle(new ErrorException($error, 0, $number, $file, $line));
 });
 
+//执行完脚本后 如果有错误 抛出处理
 register_shutdown_function(function()
 {
 	if ( ! is_null($error = error_get_last()))
@@ -79,11 +81,14 @@ register_shutdown_function(function()
 // --------------------------------------------------------------
 // Set the default timezone.
 // --------------------------------------------------------------
+//
+//注册时区 读取配置更改
 date_default_timezone_set(System\Config::get('application.timezone'));
 
 // --------------------------------------------------------------
 // Load the session.
 // --------------------------------------------------------------
+//session可以存在文件,数据库,缓存 取决于陪配置
 if (System\Config::get('session.driver') != '')
 {
 	System\Session::load();

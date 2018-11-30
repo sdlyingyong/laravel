@@ -3,6 +3,7 @@
 class Factory {
 
 	/**
+	 * //创建并返回一个session存储实例
 	 * Create a session driver instance.
 	 *
 	 * @param  string  $driver

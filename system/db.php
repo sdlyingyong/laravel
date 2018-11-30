@@ -55,12 +55,14 @@ class DB {
 
 	/**
 	 * Execute a SQL query against the connection.
+	 * 
 	 *
 	 * @param  string  $sql
 	 * @param  array   $bindings
 	 * @param  string  $connection
 	 * @return mixed
 	 */
+	// 对连接执行SQL查询
 	public static function query($sql, $bindings = array(), $connection = null)
 	{
 		// ---------------------------------------------------
@@ -71,6 +73,7 @@ class DB {
 		// ---------------------------------------------------
 		// Execute the query with the bindings.
 		// ---------------------------------------------------
+		//执行SQL语句
 		$result = $query->execute($bindings);
 
 		// ---------------------------------------------------
@@ -103,6 +106,7 @@ class DB {
 	 * @param  string  $connection
 	 * @return Query
 	 */
+	//传入表和连接,返回
 	public static function table($table, $connection = null)
 	{
 		return new DB\Query($table, $connection);

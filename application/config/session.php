@@ -39,6 +39,7 @@ return array(
 	| How many minutes can a session be idle before expiring?
 	|
 	*/
+	//分钟 session的有效时间 配置修改
 
 	'lifetime' => 60,
 

@@ -16,6 +16,7 @@ class Session {
 	 */
 	private static $session = array();
 
+	//构建sessioin存储方式
 	/**
 	 * Get the session driver instance.
 	 *
@@ -23,8 +24,10 @@ class Session {
 	 */
 	public static function driver()
 	{
+		//检查是否存在,不存在创建,存在则直接返回对象
 		if (is_null(static::$driver))
 		{
+			//工厂创建对象
 			static::$driver = Session\Factory::make(Config::get('session.driver'));
 		}
 

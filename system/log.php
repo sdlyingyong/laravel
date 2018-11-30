@@ -36,6 +36,7 @@ class Log {
 	}
 
 	/**
+	 * //写日志文件方法
 	 * Write a message to the logs.
 	 *
 	 * @param  string  $type
