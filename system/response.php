@@ -1,5 +1,6 @@
 <?php namespace System;
 
+//响应类
 class Response {
 
 	/**
@@ -98,6 +99,7 @@ class Response {
 	 */
 	public static function make($content, $status = 200)
 	{
+	    //返回类对象 能够书写成链式程序 类对象->方法->方法->方法
 		return new static($content, $status);
 	}
 

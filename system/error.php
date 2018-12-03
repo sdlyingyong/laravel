@@ -77,18 +77,23 @@ class Error {
 			// -----------------------------------------------------
 			// Build the error view.
 			// -----------------------------------------------------
-			$view = View::make('error/exception')
+            //创建页面结果:模板+数据
+            $view = View::make('error/exception')
+                                            //bind 通过view类的属性 data绑定
 											->bind('severity', $severity)
 											->bind('message', $message)
 											->bind('file', $file)
 											->bind('line', $e->getLine())
 											->bind('trace', $e->getTraceAsString())
 											->bind('contexts', static::context($file, $e->getLine()));
-			
-			// -----------------------------------------------------
+
+
+            // -----------------------------------------------------
 			// Send the detailed error response.
 			// -----------------------------------------------------
-			Response::make($view, 500)->send();
+			//状态码和提示,
+            Response::make($view, 500)->send();
+
 		}
 		else
 		{

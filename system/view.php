@@ -45,6 +45,7 @@ class View {
 		// -----------------------------------------------------
 		// Get the contents of the view from the file system.
 		// -----------------------------------------------------
+        //获得全文
 		$this->content = $this->load($view);
 	}
 
@@ -55,6 +56,7 @@ class View {
 	 * @param  array   $data
 	 * @return View
 	 */
+	//创建页面 视图 + 数据
 	public static function make($view, $data = array())
 	{
 		return new self($view, $data);
@@ -71,13 +73,16 @@ class View {
 		// -----------------------------------------------------
 		// Is the view in the application directory?
 		// -----------------------------------------------------
+        //views下面是否有模板文件
 		if (file_exists($path = APP_PATH.'views/'.$view.EXT))
 		{
+		    //有模板获取文件内容
 			return file_get_contents($path);
 		}
 		// -----------------------------------------------------
 		// Is the view in the system directory?
 		// -----------------------------------------------------
+        //如果是系统预设模板,从system/views获取
 		elseif (file_exists($path = SYS_PATH.'views/'.$view.EXT))
 		{
 			return file_get_contents($path);
@@ -87,6 +92,7 @@ class View {
 		// -----------------------------------------------------
 		else
 		{
+		    //没有则抛出异常提示
 			throw new \Exception("View [$view] doesn't exist.");
 		}
 	}
