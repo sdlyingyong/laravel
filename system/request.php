@@ -19,6 +19,8 @@ class Request {
 		// --------------------------------------------------------------
 		// Have we already determined the URI?
 		// --------------------------------------------------------------
+        //
+        //已经将uri路径保存到类变量中,则直接返回类变量中保存的值
 		if ( ! is_null(static::$uri))
 		{
 			return static::$uri;
@@ -27,6 +29,7 @@ class Request {
 		// --------------------------------------------------------------
 		// Use the PATH_INFO variable if it is available.
 		// --------------------------------------------------------------
+        //赋值uri,如果path_info有值.则将其转为小写,确定路径
 		if (isset($_SERVER['PATH_INFO']))
 		{
 			return static::$uri = static::tidy($_SERVER['PATH_INFO']);
@@ -35,6 +38,7 @@ class Request {
 		// --------------------------------------------------------------
 		// If the server REQUEST_URI variable is not available, bail out.
 		// --------------------------------------------------------------
+        //检查请求URI,没有则发出错误提示 没有请求uri
 		if ( ! isset($_SERVER['REQUEST_URI']))
 		{
 			throw new \Exception('Unable to determine the request URI.');			
@@ -73,8 +77,10 @@ class Request {
 	 *
 	 * @return string
 	 */
+    //
 	public static function method()
 	{
+	    //从POST或者请求体获取到请求方式 REQUEST_METHOD
 		// --------------------------------------------------------------
 		// The method can be spoofed using a POST variable. This allows 
 		// HTML forms to simulate PUT and DELETE methods.

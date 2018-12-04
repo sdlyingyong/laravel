@@ -18,6 +18,7 @@ class Router {
 
 	/**
 	 * Search a set of routes for the route matching a method and URI.
+     * //绑定执行路由对应的方法和网址
 	 *
 	 * @param  string  $method
 	 * @param  string  $uri

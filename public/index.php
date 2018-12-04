@@ -97,17 +97,21 @@ if (System\Config::get('session.driver') != '')
 // --------------------------------------------------------------
 // Execute the global "before" filter.
 // --------------------------------------------------------------
+//过滤器加载
 $response = System\Filter::call('before');
 
 // --------------------------------------------------------------
 // Only execute the route function if the "before" filter did
 // not override by sending a response.
 // --------------------------------------------------------------
+//判断是否有before过滤器
+//
 if (is_null($response))
 {
 	// ----------------------------------------------------------
 	// Route the request to the proper route.
 	// ----------------------------------------------------------
+    //route($_SERVER['REQUEST_METHOD'], )
 	$route = System\Router::route(Request::method(), Request::uri());
 
 	// ----------------------------------------------------------

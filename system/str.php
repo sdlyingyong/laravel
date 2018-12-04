@@ -26,6 +26,7 @@ class Str {
      * @param  string  $value
      * @return string
      */
+    //兼容方式将字符串转为小写
     public static function lower($value)
     {
         return function_exists('mb_strtolower') ? mb_strtolower($value, static::$encoding) : strtolower($value);
