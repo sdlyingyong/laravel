@@ -17,6 +17,7 @@ return array(
 	|
 	*/
 
+	//route中,赋值键值对形式 method => uri
 	'GET /' => function()
 	{
 		return View::make('home/index');

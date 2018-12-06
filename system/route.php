@@ -1,5 +1,6 @@
 <?php namespace System;
 
+//框架的路由系统
 class Route {
 
 	/**

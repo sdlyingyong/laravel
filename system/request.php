@@ -47,16 +47,18 @@ class Request {
 		// --------------------------------------------------------------
 		// Get the PHP_URL_PATH of the request URI.
 		// --------------------------------------------------------------
+        //解析访问此页面需要的URL
 		$uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
 		// --------------------------------------------------------------
 		// Slice the application URL off of the URI.
 		// --------------------------------------------------------------
+        //从本页面地址URL寻找项目地址,如果找到,截取项目地址
 		if (strpos($uri, $base_url = parse_url(Config::get('application.url'), PHP_URL_PATH)) === 0)
 		{
 			$uri = substr($uri, strlen($base_url));
 		}
-
+        //返回uriwuli路径地址
 		return static::$uri = static::tidy($uri);
 	}
 

@@ -100,7 +100,7 @@ class Response {
 	public static function make($content, $status = 200)
 	{
 	    //返回类对象 能够书写成链式程序 类对象->方法->方法->方法
-		return new static($content, $status);
+		return new static($content, $status);   //面向对象的写法,响应的类知道所有的http状态码,传递你想用的,他负责标准格式的输出
 	}
 
 	/**
@@ -110,6 +110,7 @@ class Response {
 	 * @param  int       $status
 	 * @return Response
 	 */
+	//创建视图的工厂模式方法
 	public static function view($view, $status = 200)
 	{
 		return static::make(View::make($view), $status);

@@ -112,22 +112,30 @@ if (is_null($response))
 	// Route the request to the proper route.
 	// ----------------------------------------------------------
     //route($_SERVER['REQUEST_METHOD'], )
+
+    //拿到一个路由对象
 	$route = System\Router::route(Request::method(), Request::uri());
 
 	// ----------------------------------------------------------
 	// Execute the route function.
 	// ----------------------------------------------------------
-	if ( ! is_null($route))
-	{
-		$response = $route->call();	
+    //判断是否拿到路由对象,没有则模板输出404
+    if ( ! is_null($route))
+    {
+        //拿着路由对象调用call()方法,取得一个响应示例
+        $response = $route->call();
 	}
 	else
 	{
+	    //模板输出404
 		$response = System\Response::view('error/404', 404);
 	}
 }
 else
 {
+    //有过滤器的,检查是否属于响应类对象,
+    //是响应类对象(包含正文,状态,header的),直接返回
+    //不属于响应类实例,则新建响应类实例
 	$response = ( ! $response instanceof System\Response) ? new System\Response($response) : $response;
 }
 

@@ -64,6 +64,7 @@ class View {
 
 	/**
 	 * Load the content of a view.
+     *
 	 *
 	 * @param  string  $view
 	 * @return string
